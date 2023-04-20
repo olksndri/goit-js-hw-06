@@ -28,21 +28,22 @@ const ingredients = [
 
 const ingredientsList = document.querySelector("#ingredients");
 
-// for (let i = ingredients.length - 1; i >= 0; i--) {
-//   const listItem = document.createElement("li");
-
-//   listItem.textContent = ingredients[i];
-
-//   listItem.classList.add("item");
-
-//   ingredientsList.prepend(listItem);
-// }
-// console.log(ingredientsList);
+const list = [];
 
 ingredients.forEach((elem) => {
   const listItem = document.createElement("li");
+
   listItem.textContent = elem;
+
   listItem.classList.add("item");
-  ingredientsList.append(listItem);
+
+  // console.log(listItem);
+
+  list.push(listItem);
 });
+
+// console.log(list);
+
+ingredientsList.append(...list);
+
 console.log(ingredientsList);
