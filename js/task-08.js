@@ -17,9 +17,9 @@ const form = document.querySelector("form.login-form");
 const message = "Всі поля повинні бути заповнені!";
 
 class UserInfo {
-  constructor({ Email, Password }) {
-    this.Email = Email;
-    this.Password = Password;
+  constructor({ email, password }) {
+    this.email = email;
+    this.password = password;
   }
 }
 
@@ -36,8 +36,8 @@ function handleSubmit(event) {
   } else {
     console.log(
       new UserInfo({
-        Email: email.value,
-        Password: password.value,
+        email: email.value,
+        password: password.value,
       })
     );
     event.currentTarget.reset();
