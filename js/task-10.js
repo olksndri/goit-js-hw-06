@@ -32,23 +32,30 @@ input.addEventListener("input", (event) => {
 });
 let step = Number(input.step);
 
+const min = Number(input.min);
+const max = Number(input.max);
+
 createBtn.addEventListener("click", createBoxes);
 destroyBtn.addEventListener("click", destroyBoxes);
 
 function createBoxes() {
-  let i = 0;
-  let counter = 30;
-  for (i = 0; i < amount; i += step) {
-    const element = document.createElement("div");
+  if (amount < min || amount > max) {
+    return;
+  } else {
+    let i = 0;
+    let counter = 30;
+    for (i = 0; i < amount; i += step) {
+      const element = document.createElement("div");
 
-    element.style.backgroundColor = getRandomHexColor();
-    element.style.height = `${counter}px`;
-    element.style.width = `${counter}px`;
+      element.style.backgroundColor = getRandomHexColor();
+      element.style.height = `${counter}px`;
+      element.style.width = `${counter}px`;
 
-    counter += 10;
-    totalElements.push(element);
+      counter += 10;
+      totalElements.push(element);
+    }
+    boxes.append(...totalElements);
   }
-  boxes.append(...totalElements);
 }
 
 function destroyBoxes() {
