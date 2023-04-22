@@ -25,41 +25,35 @@ const createBtn = document.querySelector("[data-create='']");
 const destroyBtn = document.querySelector("[data-destroy='']");
 
 let totalElements = [];
-let counter = 30;
 let amount = 0;
-let input = document
-  .querySelector("input")
-  .addEventListener("input", (event) => {
-    amount = event.currentTarget.value;
-  });
+let input = document.querySelector("input");
+input.addEventListener("input", (event) => {
+  amount = event.currentTarget.value;
+});
+let step = Number(input.step);
 
 createBtn.addEventListener("click", createBoxes);
 destroyBtn.addEventListener("click", destroyBoxes);
 
 function createBoxes() {
-  for (let i = 0; i < amount; i++) {
+  let i = 0;
+  let counter = 30;
+  for (i = 0; i < amount; i += step) {
     const element = document.createElement("div");
 
     element.style.backgroundColor = getRandomHexColor();
     element.style.height = `${counter}px`;
     element.style.width = `${counter}px`;
-    // element.classList.add("box");
 
     counter += 10;
-
     totalElements.push(element);
-    // console.log(element);
   }
   boxes.append(...totalElements);
-  // console.log(...totalElements);
 }
 
 function destroyBoxes() {
+  input.value = "";
+  amount = 0;
   boxes.innerHTML = "";
-  counter = 30;
   totalElements = [];
-  // const boxesQuantity = document.querySelectorAll("div.box").length;
-  // for (let i = 0; i < boxesQuantity; i++) {
-  //   document.querySelector("div.box").remove();
-  // }
 }
