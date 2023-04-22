@@ -10,17 +10,17 @@
 // завдання.
 
 const input = document.querySelector("#validation-input");
-// console.log(input);
 input.addEventListener("blur", (event) => {
   if (event.currentTarget.value.length === Number(input.dataset.length)) {
-    input.classList.add("valid");
-    if (input.classList.contains("invalid")) {
-      input.classList.remove("invalid");
-    }
+    replaceClass("valid", "invalid");
   } else {
-    input.classList.add("invalid");
-    if (input.classList.contains("valid")) {
-      input.classList.remove("valid");
-    }
+    replaceClass("invalid", "valid");
   }
 });
+
+function replaceClass(newClass, oldClass) {
+  if (input.classList.contains(oldClass)) {
+    input.classList.remove(oldClass);
+  }
+  input.classList.add(newClass);
+}
